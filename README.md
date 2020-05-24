@@ -1,0 +1,5 @@
+# DMMWEBCAMP学習コンテンツ
+## 応用課題３ いいね機能、コメント機能の実装
+### 開発時苦労した点
+* bookモデルとfavoriteモデルをmodelファイルで紐づけたものの、いいねした際にidがマッチせず、エラー発動。問題点は、rootファイルにて、bookとfavoriteをそれぞれ独立した状態でresourseを適用させていたこと。これを、bookのresourse内にfavoriteのresourseを置いたらidを取得でき、いいねが機能した
+* 投稿一覧画面にて、いいねの削除リンク先に対してbook.idが取得されないエラーが発動。問題点は、rootファイルのfavorite resourseを、resoursesの複数形で宛てていたこと。この時routesはbook_favorite_pathでDELETEメソッド、book_favorites_pathでPOSTメソッドと割り当てられていたが、book_favorite_pathへはbook.idが取得できずDELETEメソッドがうまく機能しなかった。これはfavoriteのresoursesを単数形に直したことで解消。
